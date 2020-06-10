@@ -46,7 +46,7 @@
     <a v-for="(streamer, key) in this.streamerList" :aria-label="key" :href="`https://twitch.tv/${key}`" :key="`streamer-${key}`">
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-          <img v-on="on" class="elements" :src="`https://fp4u.glitch.me/img/${key}`">
+          <img type="i" v-on="on" class="elements" :src="`https://fp4u.glitch.me/img/${key}`">
         </template>
         <span>{{key}}</span>
       </v-tooltip>
