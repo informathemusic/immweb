@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-if="drawer" app>
       <v-list dense>
         <v-list-item v-for="(route, key) of $router.options.routes.filter(v=>v.appear=='navbar')" :key="`route-${key}`" link>
           <v-list-item-action>
@@ -34,7 +34,7 @@
       source: String,
     },
     data: () => ({
-      drawer: null,
+      drawer: false
     })
   };
 </script>
