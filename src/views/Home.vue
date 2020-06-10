@@ -170,7 +170,8 @@ export default {
           }
         },*/
       }
-    ]
+    ],
+    drawer: false
   }),
   mounted() {
     /*Object.entries(this.streamerList).forEach(async ([i])=>{
