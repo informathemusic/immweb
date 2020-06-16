@@ -66,11 +66,6 @@
 
 export default {
   name: 'Home',
-  methods: {
-    toggleGithub(k1,k2) {
-      this.acquired[k1][k2].githubToggeled=!this.acquired[k1][k2].githubToggeled
-    },
-  },
   data:() => ({
     streamerList: {
       instafluff: {img:''},

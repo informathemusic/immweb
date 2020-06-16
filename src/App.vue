@@ -24,6 +24,10 @@
     </v-content>
     <v-footer color="#FC6" app>
       <span class="white--text roboto">&copy; 2020</span>
+      <v-spacer></v-spacer>
+      <a href="mailto:informathemusic@gmail.com" class="unlinkify">
+        E-mail me
+      </a>
     </v-footer>
   </v-app>
 </template>
@@ -40,6 +44,9 @@
 </script>
 
 <style>
+div.bottombar{
+  border-left: 2px;
+}
 .roboto{
   font-family: roboto !important;
 }

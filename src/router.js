@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Covid19SimIndex from './views/covid-19_sim/Index.vue'
+import TMCCIndex from './views/tmcc/Index.vue'
 import Covid19SimSimulation from './views/covid-19_sim/Simulation.vue'
 
 Vue.use(Router)
@@ -21,6 +22,13 @@ export default new Router({
       icon: 'virus',
       appear: 'navbar',
       component: Covid19SimIndex
+    },
+    {
+      path: '/tmcc/',
+      name: 'Troll My Coworkers Clipboard',
+      icon: 'comedy',
+      appear: 'navbar',
+      component: TMCCIndex
     },
     {
       path: '/covid-19_sim/simulation',
