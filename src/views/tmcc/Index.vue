@@ -368,6 +368,11 @@ export default {
         desc:"Cause a syntax error by using different punctuation",
         list:[
           {
+            name: 'Right double quotation mark',
+            spottable:'none',
+            char: '\u201D'
+          },
+          {
             name: 'Single quote (x2)',
             spottable:'kinda',
             char: '\'\''
