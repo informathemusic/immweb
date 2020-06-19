@@ -24,19 +24,24 @@
               </v-toolbar>
               <v-card-text>
                 <div v-for="(charcat,key) of chars" :key="key">
-                  <v-menu offset-y>
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-btn
-                        class="mb-5"
-                        color="primary"
-                        dark
-                        v-bind="attrs"
-                        v-on="on"
-                        block
-                      >
-                        <v-icon v-if="charcat.icon">mdi-{{charcat.icon}}</v-icon>
-                        {{charcat.label}}
-                      </v-btn>
+                  <v-menu>
+                    <template v-slot:activator="{ on: menu, attrs }">
+                      <v-tooltip bottom>
+                        <template v-slot:activator="{ on: tooltip }">
+                          <v-btn
+                            class="mt-3 mb-3"
+                            color="primary"
+                            dark
+                            v-bind="attrs"
+                            v-on="{ ...tooltip, ...menu }"
+                            block
+                          >
+                            <v-icon v-if="charcat.icon">mdi-{{charcat.icon}}</v-icon>
+                            {{charcat.label}}
+                          </v-btn>
+                        </template>
+                        <span>{{charcat.desc}}</span>
+                      </v-tooltip>
                     </template>
                     <v-list
                       class="overflow-y-auto"
@@ -78,7 +83,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
   methods:{
@@ -109,6 +113,7 @@ export default {
       {
         label:"Spaces",
         icon:"arrow-split-vertical",
+        desc:"Empty spaces. Put them anywhere to cause an error",
         list:[
           {
             name:'Mongolian space',
@@ -151,6 +156,7 @@ export default {
       {
         label:"Russian letters",
         icon:"alphabet-cyrillic",
+        desc:"Letters that looks like the ones in the latin alphabet but are not.",
         list:[
           {
             name:'Cyrillic capital A',
@@ -282,6 +288,7 @@ export default {
       {
         label: "Greek letters",
         icon: "alphabet-greek",
+        desc:"Letters that looks like the ones in the latin alphabet but are not.",
         list: [
           {
             name: 'Greek capital A',
@@ -353,6 +360,68 @@ export default {
             spottable:'none',
             char: 'Ζ'
           }
+        ]
+      },
+      {
+        label:"Punctuation",
+        icon:"comma-box-outline",
+        desc:"Cause a syntax error by using different punctuation",
+        list:[
+          {
+            name: 'Greek question mark',
+            spottable:'none',
+            char: '\u037E'
+          },
+          {
+            name: 'Full-width comma',
+            spottable:'gt-kinda',
+            char: '\uFF0C'
+          },
+          {
+            name: 'Full-width exclamation mark',
+            spottable:'gt-kinda',
+            char: '\uFF01'
+          },
+          {
+            name: 'Full-width question mark',
+            spottable:'gt-kinda',
+            char: '\uFF1F'
+          },
+          {
+            name: 'Full-width semi colon',
+            spottable:'gt-kinda',
+            char: '\uFF1B'
+          },
+          {
+            name: 'Full-width colon',
+            spottable:'gt-kinda',
+            char: '\uFF1A'
+          },
+          {
+            name: 'Full-width left parenthesis',
+            spottable:'gt-kinda',
+            char: '\uFF08'
+          },
+          {
+            name: 'Full-width right parenthesis',
+            spottable:'gt-kinda',
+            char: '\uFF09'
+          },
+          {
+            name: 'Full-width left square bracket',
+            spottable:'gt-kinda',
+            char: '\uFF3B'
+          },
+          {
+            name: 'Full-width right square bracket',
+            spottable:'gt-kinda',
+            char: '\uFF3D'
+          },
+          {
+            name: 'Wavy dash',
+            spottable:'kinda',
+            char: '\uFF5E'
+          },
         ]
       },
     ]
