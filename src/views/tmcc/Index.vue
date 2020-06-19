@@ -368,6 +368,11 @@ export default {
         desc:"Cause a syntax error by using different punctuation",
         list:[
           {
+            name: 'Single quote (x2)',
+            spottable:'kinda',
+            char: '\'\''
+          },
+          {
             name: 'Greek question mark',
             spottable:'none',
             char: '\u037E'
