@@ -373,9 +373,34 @@ export default {
             char: '\u201D'
           },
           {
-            name: 'Single quote (x2)',
+            name: 'Two-dot punctuation',
             spottable:'kinda',
-            char: '\'\''
+            char: '\u205A'
+          },
+          {
+            name: 'Double High-Reversed-9 Quotation Mark',
+            spottable:'kinda',
+            char: '\u201F'
+          },
+          {
+            name: 'Double Prime',
+            spottable:'kinda',
+            char: '\u2033'
+          },
+          {
+            name: 'Reflected Double Prime',
+            spottable:'kinda',
+            char: '\u2036'
+          },
+          {
+            name: 'Double High-Reversed-9 Quotation Mark',
+            spottable:'kinda',
+            char: '\u201F'
+          },
+          {
+            name: 'Right double quotation mark',
+            spottable:'none',
+            char: '\u201D'
           },
           {
             name: 'Greek question mark',
