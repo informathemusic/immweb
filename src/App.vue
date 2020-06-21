@@ -2,8 +2,8 @@
   <v-app id="inspire">
     <v-navigation-drawer v-if="drawer" app>
       <v-list dense>
-        <a class="unlinkify navlink roboto" :href="`/#${route.path}`">
-          <v-list-item v-for="(route, key) of $router.options.routes.filter(v=>v.appear=='navbar')" :key="`route-${key}`" link>
+        <a v-for="(route, key) of $router.options.routes.filter(v=>v.appear=='navbar')" :key="`route-${key}`" class="unlinkify navlink roboto" :href="`/#${route.path}`">
+          <v-list-item link>
             <v-list-item-action>
               <v-icon>mdi-{{route.icon}}</v-icon>
             </v-list-item-action>
