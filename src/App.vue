@@ -2,14 +2,16 @@
   <v-app id="inspire">
     <v-navigation-drawer v-if="drawer" app>
       <v-list dense>
-        <v-list-item v-for="(route, key) of $router.options.routes.filter(v=>v.appear=='navbar')" :key="`route-${key}`" link>
-          <v-list-item-action>
-            <v-icon>mdi-{{route.icon}}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <a class="unlinkify navlink roboto" :href="(()=>{console.log(`/#${route.path}`);return `/#${route.path}`})()"><v-list-item-title class="left-align">{{route.name}}</v-list-item-title></a>
-          </v-list-item-content>
-        </v-list-item>
+        <a class="unlinkify navlink roboto" :href="`/#${route.path}`">
+          <v-list-item v-for="(route, key) of $router.options.routes.filter(v=>v.appear=='navbar')" :key="`route-${key}`" link>
+            <v-list-item-action>
+              <v-icon>mdi-{{route.icon}}</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title class="left-align">{{route.name}}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </a>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar app color="#FC6" dark>

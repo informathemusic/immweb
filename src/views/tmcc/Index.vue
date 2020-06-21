@@ -52,20 +52,20 @@
                         :key="index"
                       >
                         <v-list-item two-line>
-                          <v-list-item-content v-if="item.desc">
-                            <v-list-item-title :class="`${Object.entries(ranking).find(([k,v])=>k==item.spottable).color}--text text--darken-4`">{{item.name}}</v-list-item-title>
+                          <v-list-item-content v-if="item.desc" v-clipboard="item.char">
+                            <v-list-item-title :class="`${ranking[item.spottable].color}--text text--darken-4`">{{item.name}}</v-list-item-title>
                             <v-list-item-subtitle
-                              :class="`${(item.spottable=='none'?'green':item.spottable=='kinda'?'yellow':item.spottable=='gt-kinda'?'orange':item.spottable=='very'?'red':'')}--text text--darken-4`"
+                              :class="`${ranking[item.spottable].color}}--text text--darken-4`"
                             >
-                              <span style="white-space: pre;" :class="`${(item.spottable=='none'?'green':item.spottable=='kinda'?'yellow':item.spottable=='gt-kinda'?'orange':item.spottable=='very'?'red':'')}--text text--darken-4`">{{item.desc}}</span>
-                              <v-icon v-clipboard="item.char">mdi-content-copy</v-icon>
+                              <span style="white-space: pre;" :class="`${ranking[item.spottable].color}--text text--darken-4`">{{item.desc}}</span>
+                              <v-icon>mdi-content-copy</v-icon>
                             </v-list-item-subtitle>
                           </v-list-item-content>
-                          <v-list-item-title v-else>
-                            <span :class="`${(item.spottable=='none'?'green':item.spottable=='kinda'?'yellow':item.spottable=='gt-kinda'?'orange':item.spottable=='very'?'red':'')}--text text--darken-4`">
+                          <v-list-item-title v-else v-clipboard="item.char">
+                            <span :class="`${ranking[item.spottable].color}--text text--darken-4`">
                               {{item.name}}
                             </span>
-                            <v-icon v-clipboard="item.char" @click="voidIt()">mdi-content-copy</v-icon>
+                            <v-icon @click="voidIt()">mdi-content-copy</v-icon>
                           </v-list-item-title>
                         </v-list-item>
                         <v-divider/>
