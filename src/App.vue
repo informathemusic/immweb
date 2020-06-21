@@ -7,7 +7,7 @@
             <v-icon>mdi-{{route.icon}}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <router-link class="unlinkify navlink roboto" :to="route.path"><v-list-item-title class="left-align">{{route.name}}</v-list-item-title></router-link>
+            <a class="unlinkify navlink roboto" :href="(()=>{console.log(`/#${route.path}`);return `/#${route.path}`})()"><v-list-item-title class="left-align">{{route.name}}</v-list-item-title></a>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -38,7 +38,8 @@
       source: String,
     },
     data: () => ({
-      drawer: false
+      drawer: false,
+      console
     })
   };
 </script>

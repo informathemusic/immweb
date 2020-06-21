@@ -1,6 +1,6 @@
 <template>
   <v-container>
-<h1>COVID-19 simulation</h1>
+    <h1>COVID-19 simulation</h1>
     <h3>Made by InforMatheMusic</h3>
     <div>
       <p>
@@ -68,8 +68,6 @@
 <script>
 export default {
   data: () => ({
-    // Just like JSX! Oh wait...
-    page: ``
   }),
   methods: {
     gotosim() {
