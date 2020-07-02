@@ -22,7 +22,7 @@
         </div>
         <div class="content">
           <discord-messages>
-            <discord-message author="Yeh dis iz murica" avatar="grey">
+            <discord-message author="Yeh dis iz murica" avatar="gray">
               They only gave me 10$ for running 4 miles delivering 40 Pounds of hardware!
             </discord-message>
             <discord-message author="🇹🇫 does not mean 🥖">
