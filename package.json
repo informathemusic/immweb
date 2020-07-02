@@ -17,6 +17,7 @@
     "dotenv": "^8.2.0",
     "v-clipboard": "^2.2.3",
     "vue": "^2.6.10",
+    "vue-discord-message": "^4.0.0",
     "vue-firestore": "^0.3.30",
     "vue-head": "^2.2.0",
     "vue-router": "^3.0.3",

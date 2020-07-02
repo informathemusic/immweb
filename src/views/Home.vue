@@ -67,6 +67,7 @@
 export default {
   name: 'Home',
   data:() => ({
+    
     streamerList: {
       instafluff: {img:''},
       codinggarden:  {img:''},

@@ -46,7 +46,7 @@
   };
 </script>
 
-<style>
+<style scoped>
 div.bottombar{
   border-left: 2px;
 }

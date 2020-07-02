@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Covid19SimIndex from './views/covid-19_sim/Index.vue'
 import TMCCIndex from './views/tmcc/Index.vue'
 import IdeasIndex from './views/ideas/Index.vue'
+import PittyBittyIndex from './views/pitybitty/Index.vue'
 import Covid19SimSimulation from './views/covid-19_sim/Simulation.vue'
 
 Vue.use(Router)
@@ -23,6 +24,13 @@ export default new Router({
       icon: 'virus',
       appear: 'navbar',
       component: Covid19SimIndex
+    },
+    {
+      path: '/pittybitty/',
+      name: 'PityBitty conversion bot',
+      icon: 'ruler',
+      appear: 'navbar',
+      component: PittyBittyIndex
     },
     {
       path: '/ideas/',

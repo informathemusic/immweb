@@ -1,0 +1,4 @@
+Assets list:
+PityBitty: https://cdn.glitch.com/326dee5b-8b69-4d5e-ac87-3394248b188e%2FPityBitty.png?v=1593713265830
+£cologist: https://cdn.glitch.com/326dee5b-8b69-4d5e-ac87-3394248b188e%2F%C2%A3cologist.png?v=1593713260524
+SellYourTrades: https://cdn.glitch.com/326dee5b-8b69-4d5e-ac87-3394248b188e%2FSellYourTrades.png?v=1593713269466
