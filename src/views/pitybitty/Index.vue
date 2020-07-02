@@ -22,11 +22,11 @@
         </div>
         <div class="content">
           <discord-messages>
-            <discord-message author="Yeh dis iz murica">
+            <discord-message author="Yeh dis iz murica" avatar="grey">
               They only gave me 10$ for running 4 miles delivering 40 Pounds of hardware!
             </discord-message>
-            <discord-message author="🇹🇫 does not mean 🥖" avatar="blue">
-              Hmm... In metric? To EUR?
+            <discord-message author="🇹🇫 does not mean 🥖">
+              Hmm... In metric? To EUR?<br>
               m!convert <mention type="channel">general</mention> 424633431754801164
             </discord-message>
             <discord-message author="PityBitty" avatar="https://cdn.glitch.com/326dee5b-8b69-4d5e-ac87-3394248b188e%2FPityBitty.png?v=1593713265830">
