@@ -78,7 +78,7 @@
               <a class="zoombutton" href="#"></a>
             </div>
           </div>
-          CSS OS X Yosemite Window
+          #general - Discord
         </div>
         <div class="content">
           <discord-messages>
