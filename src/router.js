@@ -6,6 +6,7 @@ import TMCCIndex from './views/tmcc/Index.vue'
 import IdeasIndex from './views/ideas/Index.vue'
 import PittyBittyIndex from './views/pitybitty/Index.vue'
 import SuperawesomeIndex from './views/superawesome/Index.vue'
+import ChrashmybrowserIndex from './views/chrashmybrowser/Index.vue'
 import Covid19SimSimulation from './views/covid-19_sim/Simulation.vue'
 
 Vue.use(Router)
@@ -25,6 +26,13 @@ export default new Router({
       icon: 'virus',
       appear: 'navbar',
       component: Covid19SimIndex
+    },
+    {
+      path: '/chrashmybrowser/',
+      name: 'Chrash your browser',
+      icon: 'skull-crossbones',
+      appear: 'navbar',
+      component: ChrashmybrowserIndex
     },
     {
       path: '/superawesome/',
