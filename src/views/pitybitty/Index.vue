@@ -135,7 +135,7 @@
 export default {
 }
 </script>
-<style>
+<style scoped>
 /* START--TAKEN from="https://codepen.io/JohJakob/pen/YPxgwo" asked-permission */
 .window {
   background: #fff;
