@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <h1>This is a (probably failed) attempt to chrash your browser.</h1>
-    <v-btn>(probably don't) chrash chrome</v-btn>
+    <v-btn @click="chrash">(probably don't) chrash chrome</v-btn>
   </v-app>
 </template>
 
