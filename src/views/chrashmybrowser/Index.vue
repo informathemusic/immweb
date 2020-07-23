@@ -12,6 +12,7 @@ export default {
       let e=Array.from({length:1e9})
       while(true){
         e=e.concat(e)
+        console.log(e.length/1e9)
       }
     }
   }
