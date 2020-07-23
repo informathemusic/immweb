@@ -9,7 +9,7 @@
 export default {
   methods: {
     chrash() {
-      let e=Array.from({length:1e9})
+      let e=Array.from({length:1e9}).fill('x')
       while(true){
         e=e.concat(e)
         console.log(e.length/1e9)
