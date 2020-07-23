@@ -11,7 +11,7 @@ export default {
     chrash() {
       let e=Array.from({length:1e9})
       while(true){
-        e.fill(e)
+        e=e.concat(e)
       }
     }
   }
