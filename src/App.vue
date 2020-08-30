@@ -15,7 +15,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar app color="#FC6" dark>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>
         <router-link to="/" class="roboto unlinkify">InforMatheMusic</router-link>
       </v-toolbar-title>
