@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Not found">
+    <meta name="og:description" content="Not found">
+    <meta name="keywords" content="Not found">
+    <meta name="og:title" content="404">
+    <meta name="author" content="InforMatheMusic">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://ez-css.now.sh/" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Sup! Where did you mean to go?</h1>
+    <p>
+      Maybe you meant to go to <a class="autoset-href" data-subdomain="www" data-subdirectory="#">this place in my portfolio?</a><br/>
+      Or maybe you wanted to go <a class="autoset-href" data-subdomain="cdn">this place in my CDN?</a>
+    </p>
+    <script>
+      let autosetHref=[...document.querySelectorAll('a[class=autoset-href]')]
+      for(let element of autosetHref){
+        console.log(element.subdomain)
+        element.href=`https://${element.dataset.subdomain?element.dataset.subdomain+'.':''}${window.location.hostname.split('.').slice(1).join('.')}${element.dataset.subdirectory?element.dataset.subdirectory:''}${window.location.pathname}${window.location.search}`
+      }
+    </script>
+  </body>
+</html>

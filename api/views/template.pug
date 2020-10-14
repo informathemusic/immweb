@@ -1,0 +1,13 @@
+doctype html
+head
+  title Meme license
+  link(href='https://ez-css.now.sh/' rel='stylesheet')
+  if iscc
+    style.
+      body{font-size:1em};
+pre= message
+if iscc
+  div
+    each thing in Object.entries(data)
+      p
+        b=`${thing[0]}: ${thing[1]}`

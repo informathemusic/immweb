@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<head>
+  <title>Meme license</title>
+  <link href="https://ez-css.now.sh/" rel="stylesheet" />
+  <style>
+    body {
+      font-size: 1em;
+    }
+    textarea {
+      height: 5em;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+  <script>
+    window.onload = () => {
+      document.getElementById("year").min = new Date(Date.now()).getFullYear();
+    };
+    let generateName = async event => {
+      event.preventDefault();
+      document.getElementById("name").value = await (await fetch(
+        "https://42.imm.codes/generate-name"
+      )).text();
+    };
+    let magicstufffn = () => {
+      let year = document.getElementById("year");
+      if (document.getElementById("magicstuff").checked) {
+        year.required = false;
+        year.disabled = true;
+      } else {
+        year.required = true;
+        year.disabled = false;
+      }
+    };
+    let submitForm = async event => {
+      event.preventDefault();
+      document.getElementById("name").value = document
+        .getElementById("name")
+        .value.replace(/[^\x00-\x7F]/g, "");
+      document.getElementById("author").value = document
+        .getElementById("author")
+        .value.replace(/[^\x00-\x7F]/g, "");
+      document.getElementById("email").value = document
+        .getElementById("email")
+        .value.replace(/[^\x00-\x7F]/g, "");
+      document.getElementById("pseudo").value = document
+        .getElementById("pseudo")
+        .value.replace(/[^\x00-\x7F]/g, "");
+      if (document.getElementById("name").value == "")
+        return alert("No meme name provided");
+      try {
+        let ee = await fetch(
+          "https://42.imm.codes/mlreg/" + document.getElementById("name").value
+        );
+        if (ee.status != 404)
+          return alert(
+            `Meme ${document.getElementById("name").value} already exists`
+          );
+      } catch (err) {
+        // Did you not expect the SPANISH INQUISITION?
+      }
+      if (document.getElementById("author").value == "")
+        return alert("No author name provided");
+      if (
+        document.getElementById("email").required &&
+        document.getElementById("email").value == ""
+      )
+        return alert("No email provided");
+      if (
+        document.getElementById("mailredirect").required &&
+        document.getElementById("mailredirect").value == ""
+      )
+        return alert("No forwarding email provided");
+      let rslt = await fetch("https://42.imm.codes/hostmemelicense", {
+        method: "POST",
+        body: JSON.stringify({
+          name: document.getElementById("name").value,
+          author: document.getElementById("author").value,
+          year: !document.getElementById("magicstuff").checked
+            ? document.getElementById("year").value
+            : "magic",
+          license: document.getElementById("license").value,
+          email: document.getElementById("email").required
+            ? document.getElementById("email").value
+            : document.getElementById("mailredirect").required
+            ? document.getElementById("mailredirect").value
+            : null,
+          pseudo: document.getElementById('pseudo').value,
+          forwardto: document.getElementById("mailredirect").required
+        }),
+        headers: new Headers({ "content-type": "application/json" })
+      });
+      alert(await rslt.text());
+    };
+    let createNew = async event => {
+      event.preventDefault();
+      let req = {
+        body: {
+          name: document
+            .getElementById("name")
+            .value.replace(/[^\x00-\x7F]/g, ""),
+          year: document.getElementById("year").value || "",
+          author: document
+            .getElementById("author")
+            .value.replace(/[^\x00-\x7F]/g, "")
+        }
+      };
+      if (!req.body.name) return alert("No author name specified");
+      if (req.body.year && req.body.year < +new Date(Date.now()).getFullYear())
+        return alert("Year is before current year");
+      if (!req.body.author) return alert("No author name specified");
+      let copyDiv = document.createElement("div")
+      let copyText = document.createElement("textarea");
+      let copyCopy = document.createElement("button");
+      copyCopy.onclick = () => {copyText.select();document.execCommand('copy');alert('Copied to Clipboard')}
+      copyCopy.innerHTML = "Copy";
+      let copyDelete = document.createElement("button");
+      copyDelete.innerHTML = "Close";
+      copyDelete.addEventListener('click', e=>e.preventDefault(copyDiv.remove()))
+      copyText.rows = '10';
+      copyText.value = await (await fetch("https://42.imm.codes/genlicense", {
+        method: "POST",
+        body: JSON.stringify({
+          name: document.getElementById("name").value,
+          author: document.getElementById("author").value,
+          year: !document.getElementById("magicstuff").checked
+            ? document.getElementById("year").value
+            : "magic",
+          license: document.getElementById("license").value,
+          email: document.getElementById("email").required
+            ? document.getElementById("email").value
+            : document.getElementById("mailredirect").required
+            ? document.getElementById("mailredirect").value
+            : null,
+          pseudo: document.getElementById('pseudo').value,
+          forwardto: document.getElementById("mailredirect").required
+        }),
+        headers: new Headers({ "content-type": "application/json" })})).text();
+      copyDiv.append(copyText)
+      copyDiv.append(copyDelete)
+      copyDiv.append(copyCopy)
+      document.body.append(copyDiv);
+    };
+    let genemailfn = () => {
+      if (document.getElementById("genemail").checked) {
+        document.getElementById("emailfwing").style = "";
+        document.getElementById("mailredirect").required = true;
+        document.getElementById("email").required = false;
+        document.getElementById("email").disabled = true;
+      } else {
+        document.getElementById("emailfwing").style = "display:none;";
+        document.getElementById("mailredirect").required = false;
+        document.getElementById("email").required = true;
+        document.getElementById("email").disabled = false;
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1>Add a license to your meme</h1>
+  <h2>so that no one ever get to steal it again</h2>
+  <form onsubmit="submitForm(event)">
+    <label>
+      Name of your meme
+      <input
+        type="text"
+        id="name"
+        placeholder="(Something unique 🦄🌈)"
+        required
+        autocomplete="chrome-off"
+      />
+      <button onclick="generateName(event)">Auto generate</button>
+    </label>
+    <label>
+      Name of the author
+      <input
+        type="text"
+        id="author"
+        placeholder="Pseudonyms are less recommended, tho it will be displayed"
+        required
+      />
+    </label>
+    <label>
+      Pseudonym you used to post your meme
+      <input
+        type="text"
+        id="pseudo"
+        placeholder="Advised if you believe the possibility of false report is considerable"
+        required
+      />
+    </label>
+    <label>
+      Year
+      <input
+        type="number"
+        id="year"
+        placeholder="Year following inputed year will release the meme to the public domain"
+        required
+      />
+      <label>
+        Keep it alive yeeeeeeee
+        <input type="checkbox" id="magicstuff" onclick="magicstufffn()" />
+      </label>
+    </label>
+    <label id="creativecommonsemail">
+      Email of the author
+      <input
+        type="email"
+        id="email"
+        placeholder="No 10-min mail if you want full reliability on your license"
+        required
+      />
+      <label>
+        Generate forwarding email
+        <input type="checkbox" id="genemail" onclick="genemailfn()" />
+        <label id="emailfwing" style="display:none">
+          Email adress of the author
+          <input
+            type="email"
+            id="mailredirect"
+            placeholder="I do not [sell/share/send spam to] your email address. This is my least favourite thing to do."
+          />
+        </label>
+      </label>
+    </label>
+    <label
+      >Select license:
+      <select id="license" size="7">
+        <option value="D" selected>Anti-repost (Default, Custom)</option>
+        <option value="CC-BY-4.0"
+          >Attribution CC BY (Only allow repost with attribution)</option
+        >
+        <option value="CC-BY-SA-4.0"
+          >Attribution ShareAlike CC BY-SA (Only allow repost with attribution
+          and same license)</option
+        >
+        <option value="CC-BY-ND-4.0"
+          >Attribution-NoDerivs CC BY-ND (Only allow unchanged repost with
+          attribution)</option
+        >
+        <option value="CC-BY-NC-4.0"
+          >Attribution-NonCommercial CC BY-NC (Only allow repost with
+          attribution without commercial use)</option
+        >
+        <option value="CC-BY-NC-SA-4.0"
+          >Attribution-NonCommercial-ShareAlike CC BY-NC-SA (Only allow repost
+          with attribution and same license but without commercial use)</option
+        >
+        <option value="CC-BY-NC-ND-4.0"
+          >Attribution-NonCommercial-NoDerivs CC BY-NC-ND (Only allow unchanged
+          repost with attribution, same license, without commercial use)</option
+        >
+      </select>
+    </label>
+    <button type="submit">Host new license</button>
+    <p>or...</p>
+    <button onclick="createNew(event)">Generate license</button>
+  </form>
+  <p>Made by u/informathemusic</p>
+</body>
