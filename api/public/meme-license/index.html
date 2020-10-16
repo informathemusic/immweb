@@ -18,7 +18,7 @@
     let generateName = async event => {
       event.preventDefault();
       document.getElementById("name").value = await (await fetch(
-        "https://42.imm.codes/generate-name"
+        "https://imm.codes/api/generate-name"
       )).text();
     };
     let magicstufffn = () => {
@@ -49,7 +49,7 @@
         return alert("No meme name provided");
       try {
         let ee = await fetch(
-          "https://42.imm.codes/mlreg/" + document.getElementById("name").value
+          "https://imm.codes/api/mlreg/" + document.getElementById("name").value
         );
         if (ee.status != 404)
           return alert(
