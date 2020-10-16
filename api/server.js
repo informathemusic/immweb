@@ -57,7 +57,7 @@ app.use(formData.stream());
 // union the body and the files
 app.use(formData.union());
 //app.get("/ld47/assets/files.json", (req, res)=> fs.readdir(path.join(__dirname, 'public/ld47/assets'), (e,v)=>e?console.log(e):res.send(v)))
-app.get("/generate-name", (req, res) => {
+app.get("/api/generate-name", (req, res) => {
   let generate_no_duplicate = () => {
     let a = uniqueNamesGenerator({
       dictionaries: [adjectives, colors, animals],
@@ -68,7 +68,7 @@ app.get("/generate-name", (req, res) => {
   };
   res.header("Access-Control-Allow-Origin", "*").send(generate_no_duplicate());
 });
-app.post("/gotmail", (req, res) => {
+app.post("/api/gotmail", (req, res) => {
   console.log(req.body, req.get("Content-Type"));
   if (!req.body.To.startsWith("meme+")) return res.send("Nope :/");
   req.body.To = req.body.To.substring(5);
@@ -94,7 +94,7 @@ app.post("/gotmail", (req, res) => {
   });
   res.send("Got mail!");
 });
-app.post("/hostmemelicense", (req, res) => {
+app.post("/api/hostmemelicense", (req, res) => {
   if (!req.body.name) return res.status(400).send("No author name specified");
   if (!req.body.year) return res.status(400).send("No year specified");
   if (req.body.year < +new Date(Date.now()).getFullYear())
@@ -149,10 +149,10 @@ app.post("/hostmemelicense", (req, res) => {
     res
       //.header("Access-Control-Allow-Origin", "*")
       .status(200)
-      .send("https://42.imm.codes/mlreg/" + req.body.name)
+      .send("https://42.imm.codes/api/mlreg/" + req.body.name)
   );
 });
-app.post("/genlicense", (req, res) => {
+app.post("/api/genlicense", (req, res) => {
   if (!req.body.name) return res.status(400).send("No author name specified");
   if (!req.body.year) return res.status(400).send("No year specified");
   if (req.body.year < +new Date(Date.now()).getFullYear())
@@ -248,7 +248,7 @@ Year: ${year}
 
 `:''}${message}`)
 })
-app.get("/mlreg/*", (req, res, next) => {
+app.get("/api/mlreg/*", (req, res, next) => {
   let path = req.url.split("/");
   path = path.slice(2).join("/");
   console.log(path);
