@@ -40,22 +40,22 @@ const emails = new LocaleDb({ path: "emails.data", defaultStr: "{}" });
 const path = require("path")
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
-app.use(express.static("public"));
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/api',express.static("public"));
+app.use('/api',express.json());
+app.use('/api',bodyParser.urlencoded({ extended: true }));
 const options = {
   uploadDir: os.tmpdir(),
   autoClean: true
 };
 
 // parse data with connect-multiparty.
-app.use(formData.parse(options));
+app.use('/api',formData.parse(options));
 // delete from the request all empty files (size == 0)
-app.use(formData.format());
+app.use('/api',formData.format());
 // change the file objects to fs.ReadStream
-app.use(formData.stream());
+app.use('/api',formData.stream());
 // union the body and the files
-app.use(formData.union());
+app.use('/api',formData.union());
 //app.get("/ld47/assets/files.json", (req, res)=> fs.readdir(path.join(__dirname, 'public/ld47/assets'), (e,v)=>e?console.log(e):res.send(v)))
 app.get("/api/generate-name", (req, res) => {
   let generate_no_duplicate = () => {
