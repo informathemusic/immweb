@@ -149,7 +149,7 @@ app.post("/api/hostmemelicense", (req, res) => {
     res
       //.header("Access-Control-Allow-Origin", "*")
       .status(200)
-      .send("https://42.imm.codes/api/mlreg/" + req.body.name)
+      .send("https://imm.codes/api/mlreg/" + req.body.name)
   );
 });
 app.post("/api/genlicense", (req, res) => {
