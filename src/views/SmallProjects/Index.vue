@@ -9,14 +9,14 @@
       </p>
       <div class="text--primary">
         I'm looking for...
-        <v-autocomplete :items="Object.keys(urls)"></v-autocomplete>
+        <v-autocomplete v-model="value" :items="Object.keys(urls)"></v-autocomplete>
       </div>
     </v-card-text>
     <v-card-actions>
       <v-btn
         text
         color="teal accent-4"
-        @click="reveal = true"
+        @click="if (value in urls) location.href = urls[value]"
       >
         Open in new tab
       </v-btn>
@@ -37,15 +37,10 @@ export default {
       'Last Barrier': 'https://lb.imm.codes/',
       'Pain Au Chocolat, pas Chocolatine': 'https://pac.imm.codes/invite.html',
       'Backup Bot': 'https://backupbot.imm.codes/invite.html',
-      'Reaction Bot': 'https://discord.com/api/oauth2/authorize?client_id=744834906986643554&permissions=268435456&scope=bot'
-    }
+      'Reaction Bot': 'https://discord.com/api/oauth2/authorize?client_id=744834906986643554&permissions=268435456&scope=bot',
+    },
+    value: '',
   }),
-  created() {
-    this.chars=this.chars.map((v)=>{
-      v.list.sort((a,b)=>Object.entries(this.ranking).find(([k])=>k==a.spottable)[1].rank-Object.entries(this.ranking).find(([k])=>k==b.spottable)[1].rank)
-      return v
-    })
-  }
 };
 </script>
 
