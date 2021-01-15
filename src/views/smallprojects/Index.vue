@@ -16,7 +16,7 @@
       <v-btn
         text
         color="teal accent-4"
-        @click="if (value in urls) location.href = urls[value]"
+        @click="if (value in urls) openInNewTab(urls[value])"
       >
         Open in new tab
       </v-btn>
@@ -27,6 +27,9 @@
 <script>
 export default {
   name: 'App',
+  methods: {
+    openInNewTab: (link) => window.open(link, '_blank'),
+  },
   data: () => ({
     urls: {
       'Meme License': 'https://42.imm.codes/meme-license',
