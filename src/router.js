@@ -6,7 +6,7 @@ import Covid19SimIndex from './views/covid-19_sim/Index.vue'
 import Covid19SimSimulation from './views/covid-19_sim/Simulation.vue'
 import IdeasIndex from './views/ideas/Index.vue'
 import PittyBittyIndex from './views/pitybitty/Index.vue'
-import SmallProjectsIndex from './views/smallindex/Index.vue'
+import SmallProjectsIndex from './views/smallprojects/Index.vue'
 import SuperawesomeIndex from './views/superawesome/Index.vue'
 import TMCCIndex from './views/tmcc/Index.vue'
 
