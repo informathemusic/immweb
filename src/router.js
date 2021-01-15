@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import ChrashmybrowserIndex from './views/chrashmybrowser/Index.vue'
 import Covid19SimIndex from './views/covid-19_sim/Index.vue'
-import TMCCIndex from './views/tmcc/Index.vue'
+import Covid19SimSimulation from './views/covid-19_sim/Simulation.vue'
 import IdeasIndex from './views/ideas/Index.vue'
 import PittyBittyIndex from './views/pitybitty/Index.vue'
+import SmallProjectsIndex from './views/smallindex/Index.vue'
 import SuperawesomeIndex from './views/superawesome/Index.vue'
-import ChrashmybrowserIndex from './views/chrashmybrowser/Index.vue'
-import Covid19SimSimulation from './views/covid-19_sim/Simulation.vue'
+import TMCCIndex from './views/tmcc/Index.vue'
 
 Vue.use(Router)
 
@@ -50,6 +51,13 @@ export default new Router({
       path: '/ideas/',
       name: 'Submit a code idea!',
       icon: 'lightbulb',
+      appear: 'navbar',
+      component: IdeasIndex
+    },
+    {
+      path: '/projects/',
+      name: 'Look through all of my projects',
+      icon: 'magnify',
       appear: 'navbar',
       component: IdeasIndex
     },
