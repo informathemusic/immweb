@@ -59,7 +59,7 @@ export default new Router({
       name: 'Look through all of my projects',
       icon: 'magnify',
       appear: 'navbar',
-      component: IdeasIndex
+      component: SmallProjectsIndex
     },
     {
       path: '/tmcc/',
